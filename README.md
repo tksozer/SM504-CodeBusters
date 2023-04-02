@@ -20,3 +20,8 @@ While generated PDF documents can be found in this repository, more accessbile G
     - [Project Plan](https://docs.google.com/document/d/1orQuZmR9fgpa3AVZ7ZPmvb5boDO6vh9fAp9kjB-VRxg/edit?usp=sharing)
     - [Iteration-1 Plan](https://docs.google.com/document/d/12Ac73UCY3f0AFP1ZU9dlDsOoaScrmBVxH1PeauEMEzY/edit?usp=sharing)
     - [Iteration-2 Plan](https://docs.google.com/document/d/1JurhBFf5WDo-6KieTZZLgvysaWeEHRyvDLdMsqUyMyc/edit?usp=sharing)
+
+| :point_up:    | Important! |
+|---------------|:------------------------|
+
+Please note that spreadsheets are provided both in PDF and MS Excel formats for convenience.
