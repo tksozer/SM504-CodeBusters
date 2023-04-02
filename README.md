@@ -4,6 +4,7 @@ The purpose of the Vendomatic project is to develop a comprehensive software app
 
 Our primary stakeholders are vending machine owners, vending machine users, vending machine operators, our developers, business analysts, QA team, marketing team and our project manager. Our main challenge will be to ensure that the new platform integrates smoothly with the vending machines and meets the needs of all stakeholders.
 
+
 ## Documents
 
 While generated PDF documents can be found in this repository, more accessbile Google Document and Google Spreadsheet formats can be seen at:
