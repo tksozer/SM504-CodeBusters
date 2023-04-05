@@ -21,6 +21,8 @@ While generated PDF documents can be found in this repository, more accessbile G
     - [Project Plan](https://docs.google.com/document/d/1orQuZmR9fgpa3AVZ7ZPmvb5boDO6vh9fAp9kjB-VRxg/edit?usp=sharing)
     - [Iteration-1 Plan](https://docs.google.com/document/d/12Ac73UCY3f0AFP1ZU9dlDsOoaScrmBVxH1PeauEMEzY/edit?usp=sharing)
     - [Iteration-2 Plan](https://docs.google.com/document/d/1JurhBFf5WDo-6KieTZZLgvysaWeEHRyvDLdMsqUyMyc/edit?usp=sharing)
+- Reviews
+    - [Review-1 Document](https://docs.google.com/document/d/1uu5Dx1EZ227U97eNPkR9Dx-cwnrXwLYhHW6New6Zw98/edit?usp=sharing) & [Review-1 Table](https://docs.google.com/spreadsheets/d/1XFoFF7_ytJ1BzwCovkduKMhdRYrG55b1aroeXf8F0h0/edit?usp=share_link)
 
 | :point_up:    | Important! |
 |---------------|:------------------------|
