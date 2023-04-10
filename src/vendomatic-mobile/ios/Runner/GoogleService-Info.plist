@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>515543385290-fupqlbegqpv6a2kptkfdk221vr67iu5u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.515543385290-fupqlbegqpv6a2kptkfdk221vr67iu5u</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>515543385290-d6anjkhm1c1h147h0fuqf8deu3592a9b.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAqBM13T9g8ChXJuFNUgD_KS0uD_ri3sNA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>515543385290</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.metu.vendomatic</string>
+	<key>PROJECT_ID</key>
+	<string>vendomatic-2d85e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vendomatic-2d85e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:515543385290:ios:fe3bc3c75a14b34c2ce033</string>
+</dict>
+</plist>

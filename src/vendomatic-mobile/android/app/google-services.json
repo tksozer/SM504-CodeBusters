@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "515543385290",
+    "project_id": "vendomatic-2d85e",
+    "storage_bucket": "vendomatic-2d85e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515543385290:android:2751ece5a98ba0ee2ce033",
+        "android_client_info": {
+          "package_name": "com.flutter.vendomatic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515543385290-ioo30krbo7ukht4nchtuiraeufjbf0l8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutter.vendomatic",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEhTHrHhLsouH_08hcS25wnez2EuWa2l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "515543385290-9bcmpglu0eg59l7rqbpgpgl1iqibq7jd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutter.vendomatic"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515543385290:android:041fb569fb68f39a2ce033",
+        "android_client_info": {
+          "package_name": "com.metu.vendomatic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515543385290-d6anjkhm1c1h147h0fuqf8deu3592a9b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.metu.vendomatic",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEhTHrHhLsouH_08hcS25wnez2EuWa2l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "515543385290-9bcmpglu0eg59l7rqbpgpgl1iqibq7jd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutter.vendomatic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
