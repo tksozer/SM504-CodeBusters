@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "32955973920",
+    "project_id": "vendomatic-manager",
+    "storage_bucket": "vendomatic-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32955973920:android:fd90db56005f7123821745",
+        "android_client_info": {
+          "package_name": "com.metu.vmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32955973920-handanhji1n62q5u3vj4n81jfi45gvns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.metu.vmanager",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "32955973920-ll713n891466k37va5s6j0d707te67ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqTsXcbTXKdi3XaZb57SRYISbGCpxiy5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32955973920-ll713n891466k37va5s6j0d707te67ki.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "32955973920-qj7bnksvksihreche6tusfu66i3abhjq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.metu.vmanager"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

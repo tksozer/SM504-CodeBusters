@@ -21,6 +21,11 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void initState() {
@@ -208,8 +213,9 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                         PageController(initialPage: 0),
                                     count: 3,
                                     axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) {
-                                      _model.pageViewController!.animateToPage(
+                                    onDotClicked: (i) async {
+                                      await _model.pageViewController!
+                                          .animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,
@@ -250,6 +256,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
                               ),
                             },
                           );
@@ -294,6 +301,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
                               ),
                             },
                           );
@@ -330,12 +338,32 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Start Exploring >',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Poppins',
-                              color: FlutterFlowTheme.of(context).secondary,
-                            ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'explore',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
+                        },
+                        child: Text(
+                          'Start Exploring >',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).secondary,
+                              ),
+                        ),
                       ),
                     ],
                   ),

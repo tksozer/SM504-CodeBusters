@@ -14,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "515543385290-ioo30krbo7ukht4nchtuiraeufjbf0l8.apps.googleusercontent.com",
+          "client_id": "515543385290-3i0acl4opnuqehhi38pr27v9ievr9tkb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.flutter.vendomatic",
@@ -22,7 +22,15 @@
           }
         },
         {
-          "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+          "client_id": "515543385290-nifu6rgm18254oklu8907015mdaqipab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutter.vendomatic",
+            "certificate_hash": "e594b8a9f6eb508b1e7426769305561edabc26b2"
+          }
+        },
+        {
+          "client_id": "515543385290-i6dts0sgvjf4kkm6vgr3hkb4212nof6n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -58,7 +66,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "515543385290-d6anjkhm1c1h147h0fuqf8deu3592a9b.apps.googleusercontent.com",
+          "client_id": "515543385290-hlvs13v9u1omls9df465lrqt1ud73reh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.metu.vendomatic",
@@ -66,7 +74,15 @@
           }
         },
         {
-          "client_id": "515543385290-4rll3tuqhmtvpb9a0fgm2mffi1uhpsio.apps.googleusercontent.com",
+          "client_id": "515543385290-pi6iq8fs8p5s9cooelqjtvmn6u54e4gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.metu.vendomatic",
+            "certificate_hash": "e594b8a9f6eb508b1e7426769305561edabc26b2"
+          }
+        },
+        {
+          "client_id": "515543385290-i6dts0sgvjf4kkm6vgr3hkb4212nof6n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

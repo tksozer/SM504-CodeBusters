@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -65,20 +65,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          if (Theme.of(context).brightness == Brightness.light)
-                            Image.asset(
-                              'assets/images/logoVersionAlt@3x.png',
-                              width: 242.0,
-                              height: 60.0,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          if (Theme.of(context).brightness == Brightness.dark)
-                            Image.network(
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/template-screens-hpce0u/assets/xofl99y11az0/@3xlogo_primary_color_white.png',
-                              width: 242.0,
-                              height: 60.0,
-                              fit: BoxFit.fitWidth,
-                            ),
+                          Image.asset(
+                            'assets/images/logo.png',
+                            width: 100.0,
+                            height: 100.0,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            'Vendomatic',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 40.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
                         ],
                       ),
                     ),
@@ -177,7 +180,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 labelText: 'Password',
                                 labelStyle:
                                     FlutterFlowTheme.of(context).bodySmall,
-                                hintText: 'Enter your email here...',
+                                hintText: 'Enter your password here...',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).bodySmall,
                                 enabledBorder: OutlineInputBorder(
@@ -270,7 +273,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
 
-                              final user = await signInWithEmail(
+                              final user = await authManager.signInWithEmail(
                                 context,
                                 _model.emailAddressController.text,
                                 _model.passwordController.text,
@@ -295,6 +298,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: Colors.white,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(
@@ -329,9 +334,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               GoRouter.of(context).prepareAuthEvent();
-                              final user = await signInWithGoogle(context);
+                              final user =
+                                  await authManager.signInWithGoogle(context);
                               if (user == null) {
                                 return;
                               }
@@ -361,39 +371,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () async {
-                              GoRouter.of(context).prepareAuthEvent();
-                              final user = await signInWithApple(context);
-                              if (user == null) {
-                                return;
-                              }
-
-                              context.goNamedAuth('explore', mounted);
-                            },
-                            child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5.0,
-                                    color: Color(0x3314181B),
-                                    offset: Offset(0.0, 2.0),
-                                  )
-                                ],
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: FaIcon(
-                                FontAwesomeIcons.apple,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 24.0,
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -410,7 +387,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed('register');
+                              context.pushNamed(
+                                'register',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.rightToLeft,
+                                    duration: Duration(milliseconds: 300),
+                                  ),
+                                },
+                              );
                             },
                             text: 'Create Account',
                             options: FFButtonOptions(

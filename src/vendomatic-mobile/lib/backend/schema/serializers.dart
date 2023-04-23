@@ -198,6 +198,9 @@ Map<String, dynamic> mapToFirestore(Map<String, dynamic> data) =>
       return MapEntry(key, value);
     });
 
+List<GeoPoint>? convertToGeoPointList(List<LatLng>? list) =>
+    list?.map((e) => e.toGeoPoint()).toList();
+
 extension GeoPointExtension on LatLng {
   GeoPoint toGeoPoint() => GeoPoint(latitude, longitude);
 }
