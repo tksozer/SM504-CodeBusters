@@ -23,6 +23,9 @@ While generated PDF documents can be found in this repository, more accessbile G
     - [Iteration-2 Plan](https://docs.google.com/document/d/1JurhBFf5WDo-6KieTZZLgvysaWeEHRyvDLdMsqUyMyc/edit?usp=sharing)
 - Reviews
     - [Review-1 Document](https://docs.google.com/document/d/1uu5Dx1EZ227U97eNPkR9Dx-cwnrXwLYhHW6New6Zw98/edit?usp=sharing) & [Review-1 Table](https://docs.google.com/spreadsheets/d/1XFoFF7_ytJ1BzwCovkduKMhdRYrG55b1aroeXf8F0h0/edit?usp=share_link)
+- Proof of Concept
+    - [PoC Mobile](https://drive.google.com/file/d/1VtDSQOwPogjITndHNi_X9SEpseO484qP/view?usp=share_link)
+    - [PoC Web](https://drive.google.com/file/d/1fcWosLGAhb3ZE9iqPazT-Xk2WVF5G3EL/view?usp=share_link)
 
 | :point_up:    | Important! |
 |---------------|:------------------------|
