@@ -1,0 +1,10 @@
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\bin\Debug\netstandard2.1\SharedKernel.deps.json
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\bin\Debug\netstandard2.1\SharedKernel.dll
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\bin\Debug\netstandard2.1\SharedKernel.pdb
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.csproj.AssemblyReference.cache
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.AssemblyInfoInputs.cache
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.AssemblyInfo.cs
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.csproj.CoreCompileInputs.cache
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.dll
+E:\OneDrive\Course\SM504-TSP\CodeBusters\src\vendomatic-api\Vendomatic\SharedKernel\obj\Debug\netstandard2.1\SharedKernel.pdb

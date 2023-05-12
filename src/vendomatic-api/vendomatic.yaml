@@ -1,0 +1,226 @@
+DomainName: Vendomatic
+Messages:
+  - Name: IUpdateProduct
+    Properties:
+      - Name: VendingMachineId
+        Type: int
+      - Name: ProductId
+        Type: int
+      - Name: TotalCount
+        Type: int
+  - Name: IPurchaseProduct
+    Properties:
+      - Name: VendingMachineId
+        Type: int
+      - Name: ProductId
+        Type: int
+      - Name: PurchasedAmount
+        Type: int
+  - Name: IUpdateStatus
+    Properties:
+      - Name: VendingMachineId
+        Type: int
+      - Name: Status
+        Type: string 
+AddGit: false
+BoundedContexts:
+  - ProjectName: VendomaticApi
+    Port: 5375
+    DbContext:
+      ContextName: VendomaticDbContext
+      DatabaseName: VendomaticDb
+      Provider: Postgres
+    Entities:
+      - Name: VendingMachine
+        Features:
+          - Type: AddRecord
+          - Type: GetRecord
+          - Type: GetList
+          - Type: UpdateRecord
+          - Type: DeleteRecord
+        Properties:
+          - Name: VendingMachineId
+            Type: int?
+            CanFilter: true
+            CanSort: true
+          - Name: Alias
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Latitude
+            Type: double?
+            CanFilter: false
+            CanSort: false
+          - Name: Longitude
+            Type: double?
+            CanFilter: false
+            CanSort: false
+          - Name: Type
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: TotalIsleNumber
+            Type: int
+            CanFilter: true
+            CanSort: true
+          - Name: Status
+            Type: string
+            CanFilter: true
+            CanSort: true
+      - Name: Product
+        Features:
+          - Type: AddRecord
+          - Type: GetRecord
+          - Type: GetList
+          - Type: UpdateRecord
+          - Type: DeleteRecord
+        Properties:
+          - Name: ProductId
+            Type: int?
+            CanFilter: true
+            CanSort: true
+          - Name: Name
+            Type: string
+            CanFilter: true
+            CanSort: true          
+          - Name: Type
+            Type: string
+            CanFilter: true
+            CanSort: true
+          - Name: Quantity
+            Type: int
+            CanFilter: true
+            CanSort: true
+          - Name: UnitPrice
+            Type: decimal
+            CanFilter: true
+            CanSort: true
+      - Name: Inventory
+        Features:
+          - Type: AddRecord
+          - Type: GetRecord
+          - Type: GetList
+          - Type: UpdateRecord
+          - Type: DeleteRecord
+        Properties:
+          - Name: InventoryId
+            Type: int?
+            CanFilter: true
+            CanSort: true
+          - Name: VendingMachineId
+            Type: int
+            CanFilter: true
+            CanSort: true
+          - Name: ProductId
+            Type: int
+            CanFilter: true
+            CanSort: true
+          - Name: IsleNumber
+            Type: int
+            CanFilter: true
+            CanSort: true          
+          - Name: Quantity
+            Type: int
+            CanFilter: true
+            CanSort: true
+          - Name: UnitPrice
+            Type: decimal
+            CanFilter: true
+            CanSort: true
+    SwaggerConfig:
+      Title: Vendomatic API
+      Description: Our API uses a REST based design, leverages the JSON data format, and relies upon HTTPS for transport. We respond with meaningful HTTP response codes and if an error occurs, we include error details in the response body. The source code and documents can be accessed at https://github.com/tksozer/SM504-CodeBusters
+      ApiContact:
+        Name: Vendomatic
+        Email: vendomatic@codebusters.com
+        Url: https://github.com/tksozer/SM504-CodeBusters
+    
+    Producers:
+      - EndpointRegistrationMethodName: UpdateProductEndpoint
+        ExchangeName: product-updates-manager
+        MessageName: IUpdateProduct
+        ExchangeType: fanout
+        ProducerName: ProductUpdated
+        UsesDb: true
+      - EndpointRegistrationMethodName: UpdateStatusEndpoint
+        ExchangeName: status-updates-manager
+        MessageName: IUpdateStatus
+        ExchangeType: fanout
+        ProducerName: StatusUpdated
+        UsesDb: true
+    Consumers:
+      - EndpointRegistrationMethodName: ProductUpdatedEndpoint
+        ConsumerName: ProductUpdateHandler
+        ExchangeName: product-update-machine
+        MessageName: IUpdateProduct
+        QueueName: all-product-updates
+        ExchangeType: fanout
+      - EndpointRegistrationMethodName: ProductPurchasededEndpoint
+        ConsumerName: ProductpurchaseHandler
+        ExchangeName: product-purchase-machine
+        MessageName: IPurchaseProduct
+        QueueName: all-product-purchases
+        ExchangeType: fanout  
+      - EndpointRegistrationMethodName: StatusUpdatedEndpoint
+        ConsumerName: StatusUpdateHandler
+        ExchangeName: status-update-machine
+        MessageName: IUpdateStatus
+        QueueName: all-status-updates
+        ExchangeType: fanout   
+    Environment:
+      AuthSettings:
+        Authority: http://localhost:3255/auth/realms/DevRealm
+        Audience: vendomatic_api
+        AuthorizationUrl: http://localhost:3255/auth/realms/DevRealm/protocol/openid-connect/auth
+        TokenUrl: http://localhost:3255/auth/realms/DevRealm/protocol/openid-connect/token
+        ClientId: vendomatic.swagger
+        ClientSecret: 974d6f71-d41b-4601-9a7a-a33081f80687
+      BrokerSettings:
+        Username: bususer
+        Password: buspassword
+    Bus:
+      AddBus: true
+# AuthServer:
+#   Name: KeycloakPulumi
+#   RealmName: DevRealm
+#   Port: 3255
+#   Clients:
+#     - Id: vendomatic.postman.machine
+#       Name: Vendomatic Postman Machine
+#       Secret: 974d6f71-d41b-4601-9a7a-a33081f84682
+#       GrantType: ClientCredentials
+#       BaseUrl: "https://oauth.pstmn.io/"
+#       Scopes:
+#         - vendomatic_manager
+#         - vendomatic_operator
+#         - vendomatic_api
+#     - Id: vendomatic.postman.code
+#       Name: Vendomatic Postman Code
+#       Secret: 974d6f71-d41b-4601-9a7a-a33081f84680
+#       GrantType: Code
+#       BaseUrl: "https://oauth.pstmn.io/"
+#       Scopes:
+#         - vendomatic_manager
+#         - vendomatic_operator
+#         - vendomatic_api
+#     - Id: vendomatic.swagger
+#       Name: Vendomatic Swagger
+#       Secret: 974d6f71-d41b-4601-9a7a-a33081f80687
+#       GrantType: Code
+#       BaseUrl: "https://localhost:5375/"
+#       Scopes:
+#         - vendomatic_manager
+#         - vendomatic_operator
+#         - vendomatic_api
+#     - Id: vendomatic.bff
+#       Name: Vendomatic BFF
+#       Secret: 974d6f71-d41b-4601-9a7a-a33081f80688
+#       BaseUrl: "https://localhost:4378/"
+#       GrantType: Code
+#       RedirectUris:
+#         - "https://localhost:4378/signin-oidc"
+#       AllowedCorsOrigins:
+#         - "https://localhost:5375"
+#         - "https://localhost:4378"
+#       Scopes:
+#         - vendomatic_api

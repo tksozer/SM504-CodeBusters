@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fd5+0Iy0o7bDeAVlg3o7VqJKZNM5zvKVS1AT4d77a67N3rS8z6wTeBR90S/a8hcnFDxb+jqVjjmMhol4XCTrOw==",
+  "success": true,
+  "projectFilePath": "E:\\OneDrive\\Course\\SM504-TSP\\CodeBusters\\src\\vendomatic-api\\Vendomatic\\SharedKernel\\SharedKernel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kadir\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}
