@@ -13,12 +13,6 @@ public class FakeProductBuilder
         return this;
     }
     
-    public FakeProductBuilder WithProductId(int? productId)
-    {
-        _creationData.ProductId = productId;
-        return this;
-    }
-    
     public FakeProductBuilder WithName(string name)
     {
         _creationData.Name = name;

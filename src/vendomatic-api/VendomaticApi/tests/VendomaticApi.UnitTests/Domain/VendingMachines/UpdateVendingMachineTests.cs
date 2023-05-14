@@ -28,13 +28,13 @@ public class UpdateVendingMachineTests
         fakeVendingMachine.Update(updatedVendingMachine);
 
         // Assert
-        fakeVendingMachine.VendingMachineId.Should().Be(updatedVendingMachine.VendingMachineId);
         fakeVendingMachine.Alias.Should().Be(updatedVendingMachine.Alias);
         fakeVendingMachine.Latitude.Should().Be(updatedVendingMachine.Latitude);
         fakeVendingMachine.Longitude.Should().Be(updatedVendingMachine.Longitude);
-        fakeVendingMachine.Type.Should().Be(updatedVendingMachine.Type);
+        fakeVendingMachine.MachineType.Should().Be(updatedVendingMachine.MachineType);
         fakeVendingMachine.TotalIsleNumber.Should().Be(updatedVendingMachine.TotalIsleNumber);
         fakeVendingMachine.Status.Should().Be(updatedVendingMachine.Status);
+        fakeVendingMachine.OperatorId.Should().Be(updatedVendingMachine.OperatorId);
     }
     
     [Fact]

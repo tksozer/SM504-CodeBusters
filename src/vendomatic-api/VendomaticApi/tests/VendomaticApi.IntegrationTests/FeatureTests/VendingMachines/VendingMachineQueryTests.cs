@@ -9,6 +9,7 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Operator;
 
 public class VendingMachineQueryTests : TestBase
 {
@@ -17,7 +18,12 @@ public class VendingMachineQueryTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        var fakeOperatorOne = new FakeOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeOperatorOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder()
+            .WithOperatorId(fakeOperatorOne.Id)
+            .Build();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
 
         // Act
@@ -25,13 +31,13 @@ public class VendingMachineQueryTests : TestBase
         var vendingMachine = await testingServiceScope.SendAsync(query);
 
         // Assert
-        vendingMachine.VendingMachineId.Should().Be(fakeVendingMachineOne.VendingMachineId);
         vendingMachine.Alias.Should().Be(fakeVendingMachineOne.Alias);
         vendingMachine.Latitude.Should().Be(fakeVendingMachineOne.Latitude);
         vendingMachine.Longitude.Should().Be(fakeVendingMachineOne.Longitude);
-        vendingMachine.Type.Should().Be(fakeVendingMachineOne.Type);
+        vendingMachine.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachine.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachine.Status.Should().Be(fakeVendingMachineOne.Status);
+        vendingMachine.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
     }
 
     [Fact]

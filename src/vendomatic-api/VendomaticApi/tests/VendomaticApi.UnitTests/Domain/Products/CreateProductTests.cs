@@ -27,7 +27,6 @@ public class CreateProductTests
         var fakeProduct = Product.Create(productToCreate);
 
         // Assert
-        fakeProduct.ProductId.Should().Be(productToCreate.ProductId);
         fakeProduct.Name.Should().Be(productToCreate.Name);
         fakeProduct.Type.Should().Be(productToCreate.Type);
         fakeProduct.Quantity.Should().Be(productToCreate.Quantity);

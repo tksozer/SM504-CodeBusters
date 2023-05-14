@@ -10,6 +10,7 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Operator;
 
 public class UpdateVendingMachineCommandTests : TestBase
 {
@@ -18,8 +19,15 @@ public class UpdateVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
-        var updatedVendingMachineDto = new FakeVendingMachineForUpdateDto().Generate();
+        var fakeOperatorOne = new FakeOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeOperatorOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder()
+            .WithOperatorId(fakeOperatorOne.Id)
+            .Build();
+        var updatedVendingMachineDto = new FakeVendingMachineForUpdateDto()
+            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id)
+            .Generate();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
 
         var vendingMachine = await testingServiceScope.ExecuteDbContextAsync(db => db.VendingMachines
@@ -32,12 +40,12 @@ public class UpdateVendingMachineCommandTests : TestBase
         var updatedVendingMachine = await testingServiceScope.ExecuteDbContextAsync(db => db.VendingMachines.FirstOrDefaultAsync(v => v.Id == id));
 
         // Assert
-        updatedVendingMachine.VendingMachineId.Should().Be(updatedVendingMachineDto.VendingMachineId);
         updatedVendingMachine.Alias.Should().Be(updatedVendingMachineDto.Alias);
         updatedVendingMachine.Latitude.Should().Be(updatedVendingMachineDto.Latitude);
         updatedVendingMachine.Longitude.Should().Be(updatedVendingMachineDto.Longitude);
-        updatedVendingMachine.Type.Should().Be(updatedVendingMachineDto.Type);
+        updatedVendingMachine.MachineType.Should().Be(updatedVendingMachineDto.MachineType);
         updatedVendingMachine.TotalIsleNumber.Should().Be(updatedVendingMachineDto.TotalIsleNumber);
         updatedVendingMachine.Status.Should().Be(updatedVendingMachineDto.Status);
+        updatedVendingMachine.OperatorId.Should().Be(updatedVendingMachineDto.OperatorId);
     }
 }

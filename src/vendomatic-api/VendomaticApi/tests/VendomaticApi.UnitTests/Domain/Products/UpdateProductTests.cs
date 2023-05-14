@@ -28,7 +28,6 @@ public class UpdateProductTests
         fakeProduct.Update(updatedProduct);
 
         // Assert
-        fakeProduct.ProductId.Should().Be(updatedProduct.ProductId);
         fakeProduct.Name.Should().Be(updatedProduct.Name);
         fakeProduct.Type.Should().Be(updatedProduct.Type);
         fakeProduct.Quantity.Should().Be(updatedProduct.Quantity);

@@ -32,7 +32,6 @@ public class UpdateProductCommandTests : TestBase
         var updatedProduct = await testingServiceScope.ExecuteDbContextAsync(db => db.Products.FirstOrDefaultAsync(p => p.Id == id));
 
         // Assert
-        updatedProduct.ProductId.Should().Be(updatedProductDto.ProductId);
         updatedProduct.Name.Should().Be(updatedProductDto.Name);
         updatedProduct.Type.Should().Be(updatedProductDto.Type);
         updatedProduct.Quantity.Should().Be(updatedProductDto.Quantity);

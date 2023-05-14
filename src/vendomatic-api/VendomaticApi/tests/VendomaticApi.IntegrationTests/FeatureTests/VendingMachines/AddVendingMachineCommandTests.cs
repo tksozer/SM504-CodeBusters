@@ -9,6 +9,7 @@ using Xunit;
 using System.Threading.Tasks;
 using VendomaticApi.Domain.VendingMachines.Features;
 using SharedKernel.Exceptions;
+using VendomaticApi.SharedTestHelpers.Fakes.Operator;
 
 public class AddVendingMachineCommandTests : TestBase
 {
@@ -17,7 +18,11 @@ public class AddVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeVendingMachineOne = new FakeVendingMachineForCreationDto().Generate();
+        var fakeOperatorOne = new FakeOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeOperatorOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineForCreationDto()
+            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id).Generate();
 
         // Act
         var command = new AddVendingMachine.Command(fakeVendingMachineOne);
@@ -26,20 +31,20 @@ public class AddVendingMachineCommandTests : TestBase
             .FirstOrDefaultAsync(v => v.Id == vendingMachineReturned.Id));
 
         // Assert
-        vendingMachineReturned.VendingMachineId.Should().Be(fakeVendingMachineOne.VendingMachineId);
         vendingMachineReturned.Alias.Should().Be(fakeVendingMachineOne.Alias);
         vendingMachineReturned.Latitude.Should().Be(fakeVendingMachineOne.Latitude);
         vendingMachineReturned.Longitude.Should().Be(fakeVendingMachineOne.Longitude);
-        vendingMachineReturned.Type.Should().Be(fakeVendingMachineOne.Type);
+        vendingMachineReturned.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachineReturned.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachineReturned.Status.Should().Be(fakeVendingMachineOne.Status);
+        vendingMachineReturned.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
 
-        vendingMachineCreated.VendingMachineId.Should().Be(fakeVendingMachineOne.VendingMachineId);
         vendingMachineCreated.Alias.Should().Be(fakeVendingMachineOne.Alias);
         vendingMachineCreated.Latitude.Should().Be(fakeVendingMachineOne.Latitude);
         vendingMachineCreated.Longitude.Should().Be(fakeVendingMachineOne.Longitude);
-        vendingMachineCreated.Type.Should().Be(fakeVendingMachineOne.Type);
+        vendingMachineCreated.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachineCreated.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachineCreated.Status.Should().Be(fakeVendingMachineOne.Status);
+        vendingMachineCreated.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
     }
 }

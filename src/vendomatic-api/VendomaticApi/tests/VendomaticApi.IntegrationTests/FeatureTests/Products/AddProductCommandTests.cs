@@ -26,13 +26,11 @@ public class AddProductCommandTests : TestBase
             .FirstOrDefaultAsync(p => p.Id == productReturned.Id));
 
         // Assert
-        productReturned.ProductId.Should().Be(fakeProductOne.ProductId);
         productReturned.Name.Should().Be(fakeProductOne.Name);
         productReturned.Type.Should().Be(fakeProductOne.Type);
         productReturned.Quantity.Should().Be(fakeProductOne.Quantity);
         productReturned.UnitPrice.Should().Be(fakeProductOne.UnitPrice);
 
-        productCreated.ProductId.Should().Be(fakeProductOne.ProductId);
         productCreated.Name.Should().Be(fakeProductOne.Name);
         productCreated.Type.Should().Be(fakeProductOne.Type);
         productCreated.Quantity.Should().Be(fakeProductOne.Quantity);

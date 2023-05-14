@@ -1,13 +1,13 @@
 namespace VendomaticApi.Databases.EntityConfigurations;
 
-using VendomaticApi.Domain.Inventorys;
+using VendomaticApi.Domain.Inventories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public sealed class InventoryConfiguration : IEntityTypeConfiguration<Inventory>
 {
     /// <summary>
-    /// The database configuration for Inventorys. 
+    /// The database configuration for Inventories. 
     /// </summary>
     public void Configure(EntityTypeBuilder<Inventory> builder)
     {

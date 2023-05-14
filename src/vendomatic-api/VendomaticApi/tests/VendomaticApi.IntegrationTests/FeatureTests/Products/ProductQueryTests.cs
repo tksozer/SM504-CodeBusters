@@ -25,7 +25,6 @@ public class ProductQueryTests : TestBase
         var product = await testingServiceScope.SendAsync(query);
 
         // Assert
-        product.ProductId.Should().Be(fakeProductOne.ProductId);
         product.Name.Should().Be(fakeProductOne.Name);
         product.Type.Should().Be(fakeProductOne.Type);
         product.Quantity.Should().Be(fakeProductOne.Quantity);

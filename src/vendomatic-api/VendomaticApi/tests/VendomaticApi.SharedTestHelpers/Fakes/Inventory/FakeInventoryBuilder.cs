@@ -1,7 +1,7 @@
 namespace VendomaticApi.SharedTestHelpers.Fakes.Inventory;
 
-using VendomaticApi.Domain.Inventorys;
-using VendomaticApi.Domain.Inventorys.Models;
+using VendomaticApi.Domain.Inventories;
+using VendomaticApi.Domain.Inventories.Models;
 
 public class FakeInventoryBuilder
 {
@@ -10,24 +10,6 @@ public class FakeInventoryBuilder
     public FakeInventoryBuilder WithModel(InventoryForCreation model)
     {
         _creationData = model;
-        return this;
-    }
-    
-    public FakeInventoryBuilder WithInventoryId(int? inventoryId)
-    {
-        _creationData.InventoryId = inventoryId;
-        return this;
-    }
-    
-    public FakeInventoryBuilder WithVendingMachineId(int vendingMachineId)
-    {
-        _creationData.VendingMachineId = vendingMachineId;
-        return this;
-    }
-    
-    public FakeInventoryBuilder WithProductId(int productId)
-    {
-        _creationData.ProductId = productId;
         return this;
     }
     

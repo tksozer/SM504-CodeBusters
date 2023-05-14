@@ -8,5 +8,6 @@ public sealed class FakeVendingMachineForCreation : AutoFaker<VendingMachineForC
 {
     public FakeVendingMachineForCreation()
     {
+        RuleFor(v => v.MachineType, f => f.PickRandom<MachineTypeEnum>(MachineTypeEnum.List).Name);
     }
 }

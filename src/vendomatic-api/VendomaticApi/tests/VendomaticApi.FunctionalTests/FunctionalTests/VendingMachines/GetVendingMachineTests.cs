@@ -2,6 +2,7 @@ namespace VendomaticApi.FunctionalTests.FunctionalTests.VendingMachines;
 
 using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 using VendomaticApi.FunctionalTests.TestUtilities;
+using VendomaticApi.SharedTestHelpers.Fakes.Operator;
 using FluentAssertions;
 using Xunit;
 using System.Net;
@@ -13,7 +14,11 @@ public class GetVendingMachineTests : TestBase
     public async Task get_vendingmachine_returns_success_when_entity_exists()
     {
         // Arrange
-        var fakeVendingMachine = new FakeVendingMachineBuilder().Build();
+        var fakeOperatorOne = new FakeOperatorBuilder().Build();
+        await InsertAsync(fakeOperatorOne);
+
+        var fakeVendingMachine = new FakeVendingMachineBuilder()
+            .WithOperatorId(fakeOperatorOne.Id).Build();
         await InsertAsync(fakeVendingMachine);
 
         // Act

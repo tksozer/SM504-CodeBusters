@@ -1,8 +1,8 @@
 namespace VendomaticApi.SharedTestHelpers.Fakes.Inventory;
 
 using AutoBogus;
-using VendomaticApi.Domain.Inventorys;
-using VendomaticApi.Domain.Inventorys.Models;
+using VendomaticApi.Domain.Inventories;
+using VendomaticApi.Domain.Inventories.Models;
 
 public sealed class FakeInventoryForUpdate : AutoFaker<InventoryForUpdate>
 {

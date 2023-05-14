@@ -27,13 +27,13 @@ public class CreateVendingMachineTests
         var fakeVendingMachine = VendingMachine.Create(vendingMachineToCreate);
 
         // Assert
-        fakeVendingMachine.VendingMachineId.Should().Be(vendingMachineToCreate.VendingMachineId);
         fakeVendingMachine.Alias.Should().Be(vendingMachineToCreate.Alias);
         fakeVendingMachine.Latitude.Should().Be(vendingMachineToCreate.Latitude);
         fakeVendingMachine.Longitude.Should().Be(vendingMachineToCreate.Longitude);
-        fakeVendingMachine.Type.Should().Be(vendingMachineToCreate.Type);
+        fakeVendingMachine.MachineType.Should().Be(vendingMachineToCreate.MachineType);
         fakeVendingMachine.TotalIsleNumber.Should().Be(vendingMachineToCreate.TotalIsleNumber);
         fakeVendingMachine.Status.Should().Be(vendingMachineToCreate.Status);
+        fakeVendingMachine.OperatorId.Should().Be(vendingMachineToCreate.OperatorId);
     }
 
     [Fact]

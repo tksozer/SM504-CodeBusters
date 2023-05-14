@@ -13,12 +13,6 @@ public class FakeVendingMachineBuilder
         return this;
     }
     
-    public FakeVendingMachineBuilder WithVendingMachineId(int? vendingMachineId)
-    {
-        _creationData.VendingMachineId = vendingMachineId;
-        return this;
-    }
-    
     public FakeVendingMachineBuilder WithAlias(string alias)
     {
         _creationData.Alias = alias;
@@ -37,9 +31,9 @@ public class FakeVendingMachineBuilder
         return this;
     }
     
-    public FakeVendingMachineBuilder WithType(string type)
+    public FakeVendingMachineBuilder WithMachineType(string machineType)
     {
-        _creationData.Type = type;
+        _creationData.MachineType = machineType;
         return this;
     }
     
@@ -52,6 +46,12 @@ public class FakeVendingMachineBuilder
     public FakeVendingMachineBuilder WithStatus(string status)
     {
         _creationData.Status = status;
+        return this;
+    }
+    
+    public FakeVendingMachineBuilder WithOperatorId(Guid? operatorId)
+    {
+        _creationData.OperatorId = operatorId;
         return this;
     }
     

@@ -8,5 +8,6 @@ public sealed class FakeProductForUpdateDto : AutoFaker<ProductForUpdateDto>
 {
     public FakeProductForUpdateDto()
     {
+        RuleFor(p => p.Type, f => f.PickRandom<TypeEnum>(TypeEnum.List).Name);
     }
 }
