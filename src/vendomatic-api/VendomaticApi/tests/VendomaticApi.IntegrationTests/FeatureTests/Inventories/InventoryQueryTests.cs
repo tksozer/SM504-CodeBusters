@@ -9,6 +9,8 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 
 public class InventoryQueryTests : TestBase
 {
@@ -17,7 +19,16 @@ public class InventoryQueryTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryBuilder().Build();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventoryOne = new FakeInventoryBuilder()
+            .WithProductId(fakeProductOne.Id)
+            .WithVendingMachineId(fakeVendingMachineOne.Id)
+            .Build();
         await testingServiceScope.InsertAsync(fakeInventoryOne);
 
         // Act
@@ -25,6 +36,8 @@ public class InventoryQueryTests : TestBase
         var inventory = await testingServiceScope.SendAsync(query);
 
         // Assert
+        inventory.ProductId.Should().Be(fakeInventoryOne.ProductId);
+        inventory.VendingMachineId.Should().Be(fakeInventoryOne.VendingMachineId);
         inventory.IsleNumber.Should().Be(fakeInventoryOne.IsleNumber);
         inventory.Quantity.Should().Be(fakeInventoryOne.Quantity);
         inventory.UnitPrice.Should().Be(fakeInventoryOne.UnitPrice);

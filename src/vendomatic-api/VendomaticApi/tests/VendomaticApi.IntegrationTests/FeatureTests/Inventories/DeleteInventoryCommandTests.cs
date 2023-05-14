@@ -8,6 +8,8 @@ using Xunit;
 using Domain;
 using SharedKernel.Exceptions;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 
 public class DeleteInventoryCommandTests : TestBase
 {
@@ -16,7 +18,16 @@ public class DeleteInventoryCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryBuilder().Build();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventoryOne = new FakeInventoryBuilder()
+            .WithProductId(fakeProductOne.Id)
+            .WithVendingMachineId(fakeVendingMachineOne.Id)
+            .Build();
         await testingServiceScope.InsertAsync(fakeInventoryOne);
         var inventory = await testingServiceScope.ExecuteDbContextAsync(db => db.Inventories
             .FirstOrDefaultAsync(i => i.Id == fakeInventoryOne.Id));
@@ -50,7 +61,16 @@ public class DeleteInventoryCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryBuilder().Build();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventoryOne = new FakeInventoryBuilder()
+            .WithProductId(fakeProductOne.Id)
+            .WithVendingMachineId(fakeVendingMachineOne.Id)
+            .Build();
         await testingServiceScope.InsertAsync(fakeInventoryOne);
         var inventory = await testingServiceScope.ExecuteDbContextAsync(db => db.Inventories
             .FirstOrDefaultAsync(i => i.Id == fakeInventoryOne.Id));

@@ -9,5 +9,6 @@ public sealed class FakeVendingMachineForUpdate : AutoFaker<VendingMachineForUpd
     public FakeVendingMachineForUpdate()
     {
         RuleFor(v => v.MachineType, f => f.PickRandom<MachineTypeEnum>(MachineTypeEnum.List).Name);
+        RuleFor(v => v.Status, f => f.PickRandom<StatusEnum>(StatusEnum.List).Name);
     }
 }

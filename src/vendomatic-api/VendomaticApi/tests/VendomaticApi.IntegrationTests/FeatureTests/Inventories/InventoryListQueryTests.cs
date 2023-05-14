@@ -8,6 +8,8 @@ using FluentAssertions;
 using Domain;
 using Xunit;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 
 public class InventoryListQueryTests : TestBase
 {
@@ -17,8 +19,22 @@ public class InventoryListQueryTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryBuilder().Build();
-        var fakeInventoryTwo = new FakeInventoryBuilder().Build();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        var fakeProductTwo = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne, fakeProductTwo);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        var fakeVendingMachineTwo = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne, fakeVendingMachineTwo);
+
+        var fakeInventoryOne = new FakeInventoryBuilder()
+            .WithProductId(fakeProductOne.Id)
+            .WithVendingMachineId(fakeVendingMachineOne.Id)
+            .Build();
+        var fakeInventoryTwo = new FakeInventoryBuilder()
+            .WithProductId(fakeProductTwo.Id)
+            .WithVendingMachineId(fakeVendingMachineTwo.Id)
+            .Build();
         var queryParameters = new InventoryParametersDto();
 
         await testingServiceScope.InsertAsync(fakeInventoryOne, fakeInventoryTwo);

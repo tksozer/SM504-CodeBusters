@@ -13,6 +13,18 @@ public class FakeInventoryBuilder
         return this;
     }
     
+    public FakeInventoryBuilder WithProductId(Guid? productId)
+    {
+        _creationData.ProductId = productId;
+        return this;
+    }
+    
+    public FakeInventoryBuilder WithVendingMachineId(Guid? vendingMachineId)
+    {
+        _creationData.VendingMachineId = vendingMachineId;
+        return this;
+    }
+    
     public FakeInventoryBuilder WithIsleNumber(int isleNumber)
     {
         _creationData.IsleNumber = isleNumber;

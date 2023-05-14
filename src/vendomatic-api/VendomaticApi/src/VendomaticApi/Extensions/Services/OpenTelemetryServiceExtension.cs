@@ -54,7 +54,7 @@ public static class OpenTelemetryServiceExtension
                 .AddJaegerExporter(o =>
                 {
                     o.AgentHost = configuration.GetJaegerHostValue();
-                    o.AgentPort = 49862;
+                    o.AgentPort = 50995;
                     o.MaxPayloadSizeInBytes = 4096;
                     o.ExportProcessorType = ExportProcessorType.Batch;
                     o.BatchExportProcessorOptions = new BatchExportProcessorOptions<System.Diagnostics.Activity>

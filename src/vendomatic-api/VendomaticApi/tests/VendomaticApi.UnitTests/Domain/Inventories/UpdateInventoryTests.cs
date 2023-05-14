@@ -28,6 +28,8 @@ public class UpdateInventoryTests
         fakeInventory.Update(updatedInventory);
 
         // Assert
+        fakeInventory.ProductId.Should().Be(updatedInventory.ProductId);
+        fakeInventory.VendingMachineId.Should().Be(updatedInventory.VendingMachineId);
         fakeInventory.IsleNumber.Should().Be(updatedInventory.IsleNumber);
         fakeInventory.Quantity.Should().Be(updatedInventory.Quantity);
         fakeInventory.UnitPrice.Should().Be(updatedInventory.UnitPrice);

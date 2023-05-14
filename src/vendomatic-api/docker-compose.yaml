@@ -5,7 +5,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - '49858:5432'
+      - '50990:5432'
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -17,15 +17,15 @@ services:
     image: jaegertracing/all-in-one:latest
 #    port mappings: https://www.jaegertracing.io/docs/1.32/getting-started/
     ports:
-      - "49863:5775/udp"
-      - "49862:6831/udp"
-      - "49864:6832/udp"
-      - "49865:5778"
-      - "49866:16686"
-      - "49867:14250"
-      - "49968:14268"
-      - "49969:14269"
-      - "49970:9411"
+      - "50996:5775/udp"
+      - "50995:6831/udp"
+      - "50997:6832/udp"
+      - "50998:5778"
+      - "50999:16686"
+      - "51000:14250"
+      - "51001:14268"
+      - "51002:14269"
+      - "51003:9411"
 
         
 volumes:

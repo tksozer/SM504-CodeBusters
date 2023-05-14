@@ -39,8 +39,19 @@ public class VendingMachine : BaseEntity
     [Sieve(CanFilter = true, CanSort = true)]
     public int TotalIsleNumber { get; private set; }
 
+    private StatusEnum _status;
     [Sieve(CanFilter = true, CanSort = true)]
-    public string Status { get; private set; }
+    public string Status
+    {
+        get => _status.Name;
+        private set
+        {
+            if (!StatusEnum.TryFromName(value, true, out var parsed))
+                throw new InvalidSmartEnumPropertyName(nameof(Status), value);
+
+            _status = parsed;
+        }
+    }
 
     [JsonIgnore, IgnoreDataMember]
     public ICollection<Inventory> Inventories { get; private set; }

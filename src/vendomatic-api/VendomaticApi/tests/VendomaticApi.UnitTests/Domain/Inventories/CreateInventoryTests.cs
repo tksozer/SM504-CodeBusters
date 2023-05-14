@@ -27,6 +27,8 @@ public class CreateInventoryTests
         var fakeInventory = Inventory.Create(inventoryToCreate);
 
         // Assert
+        fakeInventory.ProductId.Should().Be(inventoryToCreate.ProductId);
+        fakeInventory.VendingMachineId.Should().Be(inventoryToCreate.VendingMachineId);
         fakeInventory.IsleNumber.Should().Be(inventoryToCreate.IsleNumber);
         fakeInventory.Quantity.Should().Be(inventoryToCreate.Quantity);
         fakeInventory.UnitPrice.Should().Be(inventoryToCreate.UnitPrice);

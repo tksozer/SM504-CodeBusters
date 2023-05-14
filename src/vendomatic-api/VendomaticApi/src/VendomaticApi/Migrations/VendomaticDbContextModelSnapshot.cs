@@ -22,44 +22,6 @@ namespace VendomaticApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("InventoryProduct", b =>
-                {
-                    b.Property<Guid>("InventoriesId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("inventories_id");
-
-                    b.Property<Guid>("ProductsId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("products_id");
-
-                    b.HasKey("InventoriesId", "ProductsId")
-                        .HasName("pk_inventory_product");
-
-                    b.HasIndex("ProductsId")
-                        .HasDatabaseName("ix_inventory_product_products_id");
-
-                    b.ToTable("inventory_product", (string)null);
-                });
-
-            modelBuilder.Entity("InventoryVendingMachine", b =>
-                {
-                    b.Property<Guid>("InventoriesId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("inventories_id");
-
-                    b.Property<Guid>("VendingMachinesId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("vending_machines_id");
-
-                    b.HasKey("InventoriesId", "VendingMachinesId")
-                        .HasName("pk_inventory_vending_machine");
-
-                    b.HasIndex("VendingMachinesId")
-                        .HasDatabaseName("ix_inventory_vending_machine_vending_machines_id");
-
-                    b.ToTable("inventory_vending_machine", (string)null);
-                });
-
             modelBuilder.Entity("VendomaticApi.Domain.Inventories.Inventory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -91,6 +53,10 @@ namespace VendomaticApi.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_modified_on");
 
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("product_id");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer")
                         .HasColumnName("quantity");
@@ -99,8 +65,18 @@ namespace VendomaticApi.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("unit_price");
 
+                    b.Property<Guid?>("VendingMachineId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("vending_machine_id");
+
                     b.HasKey("Id")
                         .HasName("pk_inventories");
+
+                    b.HasIndex("ProductId")
+                        .HasDatabaseName("ix_inventories_product_id");
+
+                    b.HasIndex("VendingMachineId")
+                        .HasDatabaseName("ix_inventories_vending_machine_id");
 
                     b.ToTable("inventories", (string)null);
                 });
@@ -397,38 +373,21 @@ namespace VendomaticApi.Migrations
                     b.ToTable("vending_machines", (string)null);
                 });
 
-            modelBuilder.Entity("InventoryProduct", b =>
+            modelBuilder.Entity("VendomaticApi.Domain.Inventories.Inventory", b =>
                 {
-                    b.HasOne("VendomaticApi.Domain.Inventories.Inventory", null)
-                        .WithMany()
-                        .HasForeignKey("InventoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_inventory_product_inventories_inventories_id");
+                    b.HasOne("VendomaticApi.Domain.Products.Product", "Product")
+                        .WithMany("Inventories")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("fk_inventories_products_product_id");
 
-                    b.HasOne("VendomaticApi.Domain.Products.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_inventory_product_products_products_id");
-                });
+                    b.HasOne("VendomaticApi.Domain.VendingMachines.VendingMachine", "VendingMachine")
+                        .WithMany("Inventories")
+                        .HasForeignKey("VendingMachineId")
+                        .HasConstraintName("fk_inventories_vending_machines_vending_machine_id");
 
-            modelBuilder.Entity("InventoryVendingMachine", b =>
-                {
-                    b.HasOne("VendomaticApi.Domain.Inventories.Inventory", null)
-                        .WithMany()
-                        .HasForeignKey("InventoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_inventory_vending_machine_inventories_inventories_id");
+                    b.Navigation("Product");
 
-                    b.HasOne("VendomaticApi.Domain.VendingMachines.VendingMachine", null)
-                        .WithMany()
-                        .HasForeignKey("VendingMachinesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_inventory_vending_machine_vending_machines_vending_machines");
+                    b.Navigation("VendingMachine");
                 });
 
             modelBuilder.Entity("VendomaticApi.Domain.Users.UserRole", b =>
@@ -458,9 +417,19 @@ namespace VendomaticApi.Migrations
                     b.Navigation("VendingMachines");
                 });
 
+            modelBuilder.Entity("VendomaticApi.Domain.Products.Product", b =>
+                {
+                    b.Navigation("Inventories");
+                });
+
             modelBuilder.Entity("VendomaticApi.Domain.Users.User", b =>
                 {
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("VendomaticApi.Domain.VendingMachines.VendingMachine", b =>
+                {
+                    b.Navigation("Inventories");
                 });
 #pragma warning restore 612, 618
         }

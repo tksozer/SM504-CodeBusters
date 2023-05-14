@@ -10,6 +10,8 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 
 public class UpdateInventoryCommandTests : TestBase
 {
@@ -18,8 +20,20 @@ public class UpdateInventoryCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryBuilder().Build();
-        var updatedInventoryDto = new FakeInventoryForUpdateDto().Generate();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventoryOne = new FakeInventoryBuilder()
+            .WithProductId(fakeProductOne.Id)
+            .WithVendingMachineId(fakeVendingMachineOne.Id)
+            .Build();
+        var updatedInventoryDto = new FakeInventoryForUpdateDto()
+            .RuleFor(i => i.ProductId, _ => fakeProductOne.Id)
+            .RuleFor(i => i.VendingMachineId, _ => fakeVendingMachineOne.Id)
+            .Generate();
         await testingServiceScope.InsertAsync(fakeInventoryOne);
 
         var inventory = await testingServiceScope.ExecuteDbContextAsync(db => db.Inventories
@@ -32,6 +46,8 @@ public class UpdateInventoryCommandTests : TestBase
         var updatedInventory = await testingServiceScope.ExecuteDbContextAsync(db => db.Inventories.FirstOrDefaultAsync(i => i.Id == id));
 
         // Assert
+        updatedInventory.ProductId.Should().Be(updatedInventoryDto.ProductId);
+        updatedInventory.VendingMachineId.Should().Be(updatedInventoryDto.VendingMachineId);
         updatedInventory.IsleNumber.Should().Be(updatedInventoryDto.IsleNumber);
         updatedInventory.Quantity.Should().Be(updatedInventoryDto.Quantity);
         updatedInventory.UnitPrice.Should().Be(updatedInventoryDto.UnitPrice);

@@ -9,19 +9,21 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using Sieve.Attributes;
-using VendomaticApi.Domain.VendingMachines;
 using VendomaticApi.Domain.Products;
+using VendomaticApi.Domain.VendingMachines;
 
 
 public class Inventory : BaseEntity
 {
     [JsonIgnore, IgnoreDataMember]
-    [Sieve(CanFilter = true, CanSort = true)]
-    public ICollection<VendingMachine> VendingMachines { get; private set; }
+    [ForeignKey("Product")]
+    public Guid? ProductId { get; private set; }
+    public Product Product { get; private set; }
 
     [JsonIgnore, IgnoreDataMember]
-    [Sieve(CanFilter = true, CanSort = true)]
-    public ICollection<Product> Products { get; private set; }
+    [ForeignKey("VendingMachine")]
+    public Guid? VendingMachineId { get; private set; }
+    public VendingMachine VendingMachine { get; private set; }
 
     [Sieve(CanFilter = true, CanSort = true)]
     public int IsleNumber { get; private set; }
@@ -37,6 +39,8 @@ public class Inventory : BaseEntity
     {
         var newInventory = new Inventory();
 
+        newInventory.ProductId = inventoryForCreation.ProductId;
+        newInventory.VendingMachineId = inventoryForCreation.VendingMachineId;
         newInventory.IsleNumber = inventoryForCreation.IsleNumber;
         newInventory.Quantity = inventoryForCreation.Quantity;
         newInventory.UnitPrice = inventoryForCreation.UnitPrice;
@@ -48,6 +52,8 @@ public class Inventory : BaseEntity
 
     public Inventory Update(InventoryForUpdate inventoryForUpdate)
     {
+        ProductId = inventoryForUpdate.ProductId;
+        VendingMachineId = inventoryForUpdate.VendingMachineId;
         IsleNumber = inventoryForUpdate.IsleNumber;
         Quantity = inventoryForUpdate.Quantity;
         UnitPrice = inventoryForUpdate.UnitPrice;

@@ -9,6 +9,8 @@ using Xunit;
 using System.Threading.Tasks;
 using VendomaticApi.Domain.Inventories.Features;
 using SharedKernel.Exceptions;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 
 public class AddInventoryCommandTests : TestBase
 {
@@ -17,7 +19,15 @@ public class AddInventoryCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeInventoryOne = new FakeInventoryForCreationDto().Generate();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventoryOne = new FakeInventoryForCreationDto()
+            .RuleFor(i => i.ProductId, _ => fakeProductOne.Id)
+            .RuleFor(i => i.VendingMachineId, _ => fakeVendingMachineOne.Id).Generate();
 
         // Act
         var command = new AddInventory.Command(fakeInventoryOne);
@@ -26,10 +36,14 @@ public class AddInventoryCommandTests : TestBase
             .FirstOrDefaultAsync(i => i.Id == inventoryReturned.Id));
 
         // Assert
+        inventoryReturned.ProductId.Should().Be(fakeInventoryOne.ProductId);
+        inventoryReturned.VendingMachineId.Should().Be(fakeInventoryOne.VendingMachineId);
         inventoryReturned.IsleNumber.Should().Be(fakeInventoryOne.IsleNumber);
         inventoryReturned.Quantity.Should().Be(fakeInventoryOne.Quantity);
         inventoryReturned.UnitPrice.Should().Be(fakeInventoryOne.UnitPrice);
 
+        inventoryCreated.ProductId.Should().Be(fakeInventoryOne.ProductId);
+        inventoryCreated.VendingMachineId.Should().Be(fakeInventoryOne.VendingMachineId);
         inventoryCreated.IsleNumber.Should().Be(fakeInventoryOne.IsleNumber);
         inventoryCreated.Quantity.Should().Be(fakeInventoryOne.Quantity);
         inventoryCreated.UnitPrice.Should().Be(fakeInventoryOne.UnitPrice);

@@ -2,6 +2,8 @@ namespace VendomaticApi.FunctionalTests.FunctionalTests.Inventories;
 
 using VendomaticApi.SharedTestHelpers.Fakes.Inventory;
 using VendomaticApi.FunctionalTests.TestUtilities;
+using VendomaticApi.SharedTestHelpers.Fakes.Product;
+using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 using FluentAssertions;
 using Xunit;
 using System.Net;
@@ -13,7 +15,15 @@ public class CreateInventoryTests : TestBase
     public async Task create_inventory_returns_created_using_valid_dto()
     {
         // Arrange
-        var fakeInventory = new FakeInventoryForCreationDto().Generate();
+        var fakeProductOne = new FakeProductBuilder().Build();
+        await InsertAsync(fakeProductOne);
+
+        var fakeVendingMachineOne = new FakeVendingMachineBuilder().Build();
+        await InsertAsync(fakeVendingMachineOne);
+
+        var fakeInventory = new FakeInventoryForCreationDto()
+            .RuleFor(i => i.ProductId, _ => fakeProductOne.Id)
+            .RuleFor(i => i.VendingMachineId, _ => fakeVendingMachineOne.Id).Generate();
 
         // Act
         var route = ApiRoutes.Inventories.Create;
