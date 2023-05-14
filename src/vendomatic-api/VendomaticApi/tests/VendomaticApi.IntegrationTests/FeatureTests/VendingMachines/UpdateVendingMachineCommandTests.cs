@@ -10,7 +10,7 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 
 public class UpdateVendingMachineCommandTests : TestBase
 {
@@ -19,14 +19,14 @@ public class UpdateVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachineOne = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id)
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id)
             .Build();
         var updatedVendingMachineDto = new FakeVendingMachineForUpdateDto()
-            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id)
+            .RuleFor(v => v.MachineOperatorId, _ => fakeMachineOperatorOne.Id)
             .Generate();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
 
@@ -46,6 +46,6 @@ public class UpdateVendingMachineCommandTests : TestBase
         updatedVendingMachine.MachineType.Should().Be(updatedVendingMachineDto.MachineType);
         updatedVendingMachine.TotalIsleNumber.Should().Be(updatedVendingMachineDto.TotalIsleNumber);
         updatedVendingMachine.Status.Should().Be(updatedVendingMachineDto.Status);
-        updatedVendingMachine.OperatorId.Should().Be(updatedVendingMachineDto.OperatorId);
+        updatedVendingMachine.MachineOperatorId.Should().Be(updatedVendingMachineDto.MachineOperatorId);
     }
 }

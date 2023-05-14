@@ -33,7 +33,7 @@ public class CreateVendingMachineTests
         fakeVendingMachine.MachineType.Should().Be(vendingMachineToCreate.MachineType);
         fakeVendingMachine.TotalIsleNumber.Should().Be(vendingMachineToCreate.TotalIsleNumber);
         fakeVendingMachine.Status.Should().Be(vendingMachineToCreate.Status);
-        fakeVendingMachine.OperatorId.Should().Be(vendingMachineToCreate.OperatorId);
+        fakeVendingMachine.MachineOperatorId.Should().Be(vendingMachineToCreate.MachineOperatorId);
     }
 
     [Fact]

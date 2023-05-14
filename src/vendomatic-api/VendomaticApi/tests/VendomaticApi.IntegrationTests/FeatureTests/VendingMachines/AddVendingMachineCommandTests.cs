@@ -9,7 +9,7 @@ using Xunit;
 using System.Threading.Tasks;
 using VendomaticApi.Domain.VendingMachines.Features;
 using SharedKernel.Exceptions;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 
 public class AddVendingMachineCommandTests : TestBase
 {
@@ -18,11 +18,11 @@ public class AddVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachineOne = new FakeVendingMachineForCreationDto()
-            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id).Generate();
+            .RuleFor(v => v.MachineOperatorId, _ => fakeMachineOperatorOne.Id).Generate();
 
         // Act
         var command = new AddVendingMachine.Command(fakeVendingMachineOne);
@@ -37,7 +37,7 @@ public class AddVendingMachineCommandTests : TestBase
         vendingMachineReturned.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachineReturned.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachineReturned.Status.Should().Be(fakeVendingMachineOne.Status);
-        vendingMachineReturned.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
+        vendingMachineReturned.MachineOperatorId.Should().Be(fakeVendingMachineOne.MachineOperatorId);
 
         vendingMachineCreated.Alias.Should().Be(fakeVendingMachineOne.Alias);
         vendingMachineCreated.Latitude.Should().Be(fakeVendingMachineOne.Latitude);
@@ -45,6 +45,6 @@ public class AddVendingMachineCommandTests : TestBase
         vendingMachineCreated.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachineCreated.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachineCreated.Status.Should().Be(fakeVendingMachineOne.Status);
-        vendingMachineCreated.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
+        vendingMachineCreated.MachineOperatorId.Should().Be(fakeVendingMachineOne.MachineOperatorId);
     }
 }

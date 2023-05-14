@@ -2,7 +2,7 @@ namespace VendomaticApi.FunctionalTests.FunctionalTests.VendingMachines;
 
 using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 using VendomaticApi.FunctionalTests.TestUtilities;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 using FluentAssertions;
 using Xunit;
 using System.Net;
@@ -14,13 +14,13 @@ public class UpdateVendingMachineRecordTests : TestBase
     public async Task put_vendingmachine_returns_nocontent_when_entity_exists()
     {
         // Arrange
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachine = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id).Build();
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id).Build();
         var updatedVendingMachineDto = new FakeVendingMachineForUpdateDto()
-            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id)
+            .RuleFor(v => v.MachineOperatorId, _ => fakeMachineOperatorOne.Id)
             .Generate();
         await InsertAsync(fakeVendingMachine);
 

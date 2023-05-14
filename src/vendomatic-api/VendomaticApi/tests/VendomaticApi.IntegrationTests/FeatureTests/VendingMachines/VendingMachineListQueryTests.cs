@@ -8,7 +8,7 @@ using FluentAssertions;
 using Domain;
 using Xunit;
 using System.Threading.Tasks;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 
 public class VendingMachineListQueryTests : TestBase
 {
@@ -18,15 +18,15 @@ public class VendingMachineListQueryTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        var fakeOperatorTwo = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne, fakeOperatorTwo);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        var fakeMachineOperatorTwo = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne, fakeMachineOperatorTwo);
 
         var fakeVendingMachineOne = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id)
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id)
             .Build();
         var fakeVendingMachineTwo = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorTwo.Id)
+            .WithMachineOperatorId(fakeMachineOperatorTwo.Id)
             .Build();
         var queryParameters = new VendingMachineParametersDto();
 

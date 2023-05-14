@@ -9,7 +9,7 @@ using FluentAssertions.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 using System.Threading.Tasks;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 
 public class VendingMachineQueryTests : TestBase
 {
@@ -18,11 +18,11 @@ public class VendingMachineQueryTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachineOne = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id)
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id)
             .Build();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
 
@@ -37,7 +37,7 @@ public class VendingMachineQueryTests : TestBase
         vendingMachine.MachineType.Should().Be(fakeVendingMachineOne.MachineType);
         vendingMachine.TotalIsleNumber.Should().Be(fakeVendingMachineOne.TotalIsleNumber);
         vendingMachine.Status.Should().Be(fakeVendingMachineOne.Status);
-        vendingMachine.OperatorId.Should().Be(fakeVendingMachineOne.OperatorId);
+        vendingMachine.MachineOperatorId.Should().Be(fakeVendingMachineOne.MachineOperatorId);
     }
 
     [Fact]

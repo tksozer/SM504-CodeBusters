@@ -34,7 +34,7 @@ public class UpdateVendingMachineTests
         fakeVendingMachine.MachineType.Should().Be(updatedVendingMachine.MachineType);
         fakeVendingMachine.TotalIsleNumber.Should().Be(updatedVendingMachine.TotalIsleNumber);
         fakeVendingMachine.Status.Should().Be(updatedVendingMachine.Status);
-        fakeVendingMachine.OperatorId.Should().Be(updatedVendingMachine.OperatorId);
+        fakeVendingMachine.MachineOperatorId.Should().Be(updatedVendingMachine.MachineOperatorId);
     }
     
     [Fact]

@@ -6,14 +6,14 @@ public class ApiRoutes
 
     // new api route marker - do not delete
 
-    public static class Operators
+    public static class MachineOperators
     {
-        public static string GetList => $"{Base}/operators";
-        public static string GetRecord(Guid id) => $"{Base}/operators/{id}";
-        public static string Delete(Guid id) => $"{Base}/operators/{id}";
-        public static string Put(Guid id) => $"{Base}/operators/{id}";
-        public static string Create => $"{Base}/operators";
-        public static string CreateBatch => $"{Base}/operators/batch";
+        public static string GetList => $"{Base}/machineOperators";
+        public static string GetRecord(Guid id) => $"{Base}/machineOperators/{id}";
+        public static string Delete(Guid id) => $"{Base}/machineOperators/{id}";
+        public static string Put(Guid id) => $"{Base}/machineOperators/{id}";
+        public static string Create => $"{Base}/machineOperators";
+        public static string CreateBatch => $"{Base}/machineOperators/batch";
     }
 
     public static class Inventories

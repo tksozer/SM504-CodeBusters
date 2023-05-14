@@ -8,7 +8,7 @@ using Xunit;
 using Domain;
 using SharedKernel.Exceptions;
 using System.Threading.Tasks;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 
 public class DeleteVendingMachineCommandTests : TestBase
 {
@@ -17,11 +17,11 @@ public class DeleteVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachineOne = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id)
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id)
             .Build();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
         var vendingMachine = await testingServiceScope.ExecuteDbContextAsync(db => db.VendingMachines
@@ -56,11 +56,11 @@ public class DeleteVendingMachineCommandTests : TestBase
     {
         // Arrange
         var testingServiceScope = new TestingServiceScope();
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await testingServiceScope.InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await testingServiceScope.InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachineOne = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id)
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id)
             .Build();
         await testingServiceScope.InsertAsync(fakeVendingMachineOne);
         var vendingMachine = await testingServiceScope.ExecuteDbContextAsync(db => db.VendingMachines

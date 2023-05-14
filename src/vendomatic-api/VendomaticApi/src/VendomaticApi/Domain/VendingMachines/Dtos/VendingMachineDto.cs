@@ -9,5 +9,5 @@ public sealed class VendingMachineDto
     public string MachineType { get; set; }
     public int TotalIsleNumber { get; set; }
     public string Status { get; set; }
-    public Guid? OperatorId { get; set; }
+    public Guid? MachineOperatorId { get; set; }
 }

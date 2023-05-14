@@ -10,7 +10,7 @@ using VendomaticApi.Domain.Users;
 using VendomaticApi.Domain.VendingMachines;
 using VendomaticApi.Domain.Products;
 using VendomaticApi.Domain.Inventories;
-using VendomaticApi.Domain.Operators;
+using VendomaticApi.Domain.MachineOperators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
@@ -36,7 +36,7 @@ public sealed class VendomaticDbContext : DbContext
     public DbSet<VendingMachine> VendingMachines { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Inventory> Inventories { get; set; }
-    public DbSet<Operator> Operators { get; set; }
+    public DbSet<MachineOperator> MachineOperators { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<RolePermission> RolePermissions { get; set; }
@@ -55,7 +55,7 @@ public sealed class VendomaticDbContext : DbContext
         modelBuilder.ApplyConfiguration(new VendingMachineConfiguration());
         modelBuilder.ApplyConfiguration(new ProductConfiguration());
         modelBuilder.ApplyConfiguration(new InventoryConfiguration());
-        modelBuilder.ApplyConfiguration(new OperatorConfiguration());
+        modelBuilder.ApplyConfiguration(new MachineOperatorConfiguration());
         modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());

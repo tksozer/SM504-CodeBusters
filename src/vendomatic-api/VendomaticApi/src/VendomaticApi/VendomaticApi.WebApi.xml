@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VendomaticApi</name>
+    </assembly>
+    <members>
+        <member name="M:VendomaticApi.Controllers.v1.InventoriesController.AddInventory(VendomaticApi.Domain.Inventories.Dtos.InventoryForCreationDto)">
+            <summary>
+            Creates a new Inventory record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.InventoriesController.GetInventory(System.Guid)">
+            <summary>
+            Gets a single Inventory by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.InventoriesController.GetInventories(VendomaticApi.Domain.Inventories.Dtos.InventoryParametersDto)">
+            <summary>
+            Gets a list of all Inventories.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.InventoriesController.UpdateInventory(System.Guid,VendomaticApi.Domain.Inventories.Dtos.InventoryForUpdateDto)">
+            <summary>
+            Updates an entire existing Inventory.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.InventoriesController.DeleteInventory(System.Guid)">
+            <summary>
+            Deletes an existing Inventory record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.MachineOperatorsController.AddMachineOperator(VendomaticApi.Domain.MachineOperators.Dtos.MachineOperatorForCreationDto)">
+            <summary>
+            Creates a new MachineOperator record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.MachineOperatorsController.GetMachineOperator(System.Guid)">
+            <summary>
+            Gets a single MachineOperator by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.MachineOperatorsController.GetMachineOperators(VendomaticApi.Domain.MachineOperators.Dtos.MachineOperatorParametersDto)">
+            <summary>
+            Gets a list of all MachineOperators.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.MachineOperatorsController.UpdateMachineOperator(System.Guid,VendomaticApi.Domain.MachineOperators.Dtos.MachineOperatorForUpdateDto)">
+            <summary>
+            Updates an entire existing MachineOperator.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.MachineOperatorsController.DeleteMachineOperator(System.Guid)">
+            <summary>
+            Deletes an existing MachineOperator record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.PermissionsController.GetPermissions">
+            <summary>
+            Gets a list of all available permissions.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.PermissionsController.GetAssignedPermissions">
+            <summary>
+            Gets a list of the current user's assigned permissions.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.ProductsController.AddProduct(VendomaticApi.Domain.Products.Dtos.ProductForCreationDto)">
+            <summary>
+            Creates a new Product record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.ProductsController.GetProduct(System.Guid)">
+            <summary>
+            Gets a single Product by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.ProductsController.GetProducts(VendomaticApi.Domain.Products.Dtos.ProductParametersDto)">
+            <summary>
+            Gets a list of all Products.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.ProductsController.UpdateProduct(System.Guid,VendomaticApi.Domain.Products.Dtos.ProductForUpdateDto)">
+            <summary>
+            Updates an entire existing Product.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.ProductsController.DeleteProduct(System.Guid)">
+            <summary>
+            Deletes an existing Product record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolePermissionsController.GetRolePermissions(VendomaticApi.Domain.RolePermissions.Dtos.RolePermissionParametersDto)">
+            <summary>
+            Gets a list of all RolePermissions.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolePermissionsController.GetRolePermission(System.Guid)">
+            <summary>
+            Gets a single RolePermission by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolePermissionsController.AddRolePermission(VendomaticApi.Domain.RolePermissions.Dtos.RolePermissionForCreationDto)">
+            <summary>
+            Creates a new RolePermission record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolePermissionsController.UpdateRolePermission(System.Guid,VendomaticApi.Domain.RolePermissions.Dtos.RolePermissionForUpdateDto)">
+            <summary>
+            Updates an entire existing RolePermission.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolePermissionsController.DeleteRolePermission(System.Guid)">
+            <summary>
+            Deletes an existing RolePermission record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.RolesController.GetRoles">
+            <summary>
+            Gets a list of all available roles.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.AddRole(System.Guid,System.String)">
+            <summary>
+            Adds a new role to a user.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.RemoveRole(System.Guid,System.String)">
+            <summary>
+            Removes a role from a User
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.GetUsers(VendomaticApi.Domain.Users.Dtos.UserParametersDto)">
+            <summary>
+            Gets a list of all Users.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.GetUser(System.Guid)">
+            <summary>
+            Gets a single User by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.AddUser(VendomaticApi.Domain.Users.Dtos.UserForCreationDto)">
+            <summary>
+            Creates a new User record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.UpdateUser(System.Guid,VendomaticApi.Domain.Users.Dtos.UserForUpdateDto)">
+            <summary>
+            Updates an entire existing User.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.UsersController.DeleteUser(System.Guid)">
+            <summary>
+            Deletes an existing User record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.AddVendingMachine(VendomaticApi.Domain.VendingMachines.Dtos.VendingMachineForCreationDto)">
+            <summary>
+            Creates a new VendingMachine record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.GetVendingMachine(System.Guid)">
+            <summary>
+            Gets a single VendingMachine by ID.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.GetVendingMachines(VendomaticApi.Domain.VendingMachines.Dtos.VendingMachineParametersDto)">
+            <summary>
+            Gets a list of all VendingMachines.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.UpdateVendingMachine(System.Guid,VendomaticApi.Domain.VendingMachines.Dtos.VendingMachineForUpdateDto)">
+            <summary>
+            Updates an entire existing VendingMachine.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.DeleteVendingMachine(System.Guid)">
+            <summary>
+            Deletes an existing VendingMachine record.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.InventoryConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.Inventories.Inventory})">
+            <summary>
+            The database configuration for Inventories. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.MachineOperatorConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.MachineOperators.MachineOperator})">
+            <summary>
+            The database configuration for MachineOperators. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.ProductConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.Products.Product})">
+            <summary>
+            The database configuration for Products. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.RolePermissionConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.RolePermissions.RolePermission})">
+            <summary>
+            The database configuration for RolePermissions. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.UserConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.Users.User})">
+            <summary>
+            The database configuration for Users. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.UserRoleConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.Users.UserRole})">
+            <summary>
+            The database configuration for UserRoles. 
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Databases.EntityConfigurations.VendingMachineConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{VendomaticApi.Domain.VendingMachines.VendingMachine})">
+            <summary>
+            The database configuration for VendingMachines. 
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.Line1">
+            <summary>
+            Address line 1 (e.g., street, PO Box, or company name).
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.Line2">
+            <summary>
+            Address line 2 (e.g., apartment, suite, unit, or building).
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.City">
+            <summary>
+            City, district, suburb, town, or village.
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.State">
+            <summary>
+            State, county, province, or region.
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.PostalCode">
+            <summary>
+            ZIP or postal code.
+            </summary>
+        </member>
+        <member name="P:VendomaticApi.Domain.Addresses.Address.Country">
+            <summary>
+            Two-letter country code <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">(ISO 3166-1 alpha-2)</a>.
+            </summary>
+        </member>
+        <member name="M:VendomaticApi.Extensions.Services.WebAppServiceConfiguration.AddBoundaryServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
+            <summary>
+            Registers all services in the assembly of the given interface.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using Sieve.Attributes;
 using VendomaticApi.Domain.Inventories;
-using VendomaticApi.Domain.Operators;
+using VendomaticApi.Domain.MachineOperators;
 
 
 public class VendingMachine : BaseEntity
@@ -46,9 +46,9 @@ public class VendingMachine : BaseEntity
     public ICollection<Inventory> Inventories { get; private set; }
 
     [JsonIgnore, IgnoreDataMember]
-    [ForeignKey("Operator")]
-    public Guid? OperatorId { get; private set; }
-    public Operator Operator { get; private set; }
+    [ForeignKey("MachineOperator")]
+    public Guid? MachineOperatorId { get; private set; }
+    public MachineOperator MachineOperator { get; private set; }
 
 
     public static VendingMachine Create(VendingMachineForCreation vendingMachineForCreation)
@@ -61,7 +61,7 @@ public class VendingMachine : BaseEntity
         newVendingMachine.MachineType = vendingMachineForCreation.MachineType;
         newVendingMachine.TotalIsleNumber = vendingMachineForCreation.TotalIsleNumber;
         newVendingMachine.Status = vendingMachineForCreation.Status;
-        newVendingMachine.OperatorId = vendingMachineForCreation.OperatorId;
+        newVendingMachine.MachineOperatorId = vendingMachineForCreation.MachineOperatorId;
 
         newVendingMachine.QueueDomainEvent(new VendingMachineCreated(){ VendingMachine = newVendingMachine });
         
@@ -76,7 +76,7 @@ public class VendingMachine : BaseEntity
         MachineType = vendingMachineForUpdate.MachineType;
         TotalIsleNumber = vendingMachineForUpdate.TotalIsleNumber;
         Status = vendingMachineForUpdate.Status;
-        OperatorId = vendingMachineForUpdate.OperatorId;
+        MachineOperatorId = vendingMachineForUpdate.MachineOperatorId;
 
         QueueDomainEvent(new VendingMachineUpdated(){ Id = Id });
         return this;

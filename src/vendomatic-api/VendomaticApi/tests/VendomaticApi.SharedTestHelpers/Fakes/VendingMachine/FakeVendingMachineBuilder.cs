@@ -49,9 +49,9 @@ public class FakeVendingMachineBuilder
         return this;
     }
     
-    public FakeVendingMachineBuilder WithOperatorId(Guid? operatorId)
+    public FakeVendingMachineBuilder WithMachineOperatorId(Guid? machineOperatorId)
     {
-        _creationData.OperatorId = operatorId;
+        _creationData.MachineOperatorId = machineOperatorId;
         return this;
     }
     

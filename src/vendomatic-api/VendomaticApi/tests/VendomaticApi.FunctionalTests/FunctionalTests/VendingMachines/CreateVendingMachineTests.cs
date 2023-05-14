@@ -2,7 +2,7 @@ namespace VendomaticApi.FunctionalTests.FunctionalTests.VendingMachines;
 
 using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 using VendomaticApi.FunctionalTests.TestUtilities;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 using FluentAssertions;
 using Xunit;
 using System.Net;
@@ -14,11 +14,11 @@ public class CreateVendingMachineTests : TestBase
     public async Task create_vendingmachine_returns_created_using_valid_dto()
     {
         // Arrange
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachine = new FakeVendingMachineForCreationDto()
-            .RuleFor(v => v.OperatorId, _ => fakeOperatorOne.Id).Generate();
+            .RuleFor(v => v.MachineOperatorId, _ => fakeMachineOperatorOne.Id).Generate();
 
         // Act
         var route = ApiRoutes.VendingMachines.Create;

@@ -2,7 +2,7 @@ namespace VendomaticApi.FunctionalTests.FunctionalTests.VendingMachines;
 
 using VendomaticApi.SharedTestHelpers.Fakes.VendingMachine;
 using VendomaticApi.FunctionalTests.TestUtilities;
-using VendomaticApi.SharedTestHelpers.Fakes.Operator;
+using VendomaticApi.SharedTestHelpers.Fakes.MachineOperator;
 using FluentAssertions;
 using Xunit;
 using System.Net;
@@ -14,11 +14,11 @@ public class DeleteVendingMachineTests : TestBase
     public async Task delete_vendingmachine_returns_nocontent_when_entity_exists()
     {
         // Arrange
-        var fakeOperatorOne = new FakeOperatorBuilder().Build();
-        await InsertAsync(fakeOperatorOne);
+        var fakeMachineOperatorOne = new FakeMachineOperatorBuilder().Build();
+        await InsertAsync(fakeMachineOperatorOne);
 
         var fakeVendingMachine = new FakeVendingMachineBuilder()
-            .WithOperatorId(fakeOperatorOne.Id).Build();
+            .WithMachineOperatorId(fakeMachineOperatorOne.Id).Build();
         await InsertAsync(fakeVendingMachine);
 
         // Act
