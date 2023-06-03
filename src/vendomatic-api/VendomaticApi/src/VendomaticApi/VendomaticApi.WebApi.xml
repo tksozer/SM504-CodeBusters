@@ -169,6 +169,11 @@
             Gets a list of all VendingMachines.
             </summary>
         </member>
+        <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.FindNearestVendingMachines(VendomaticApi.Domain.VendingMachines.Dtos.FindNearestVendingMachinesParametersDto)">
+            <summary>
+            Get the list of nearest VendingMachines.
+            </summary>
+        </member>
         <member name="M:VendomaticApi.Controllers.v1.VendingMachinesController.UpdateVendingMachine(System.Guid,VendomaticApi.Domain.VendingMachines.Dtos.VendingMachineForUpdateDto)">
             <summary>
             Updates an entire existing VendingMachine.
@@ -259,6 +264,18 @@
             <inheritdoc />
         </member>
         <member name="M:VendomaticApi.Migrations.InitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:VendomaticApi.Migrations.AddRating">
+            <inheritdoc />
+        </member>
+        <member name="M:VendomaticApi.Migrations.AddRating.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VendomaticApi.Migrations.AddRating.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VendomaticApi.Migrations.AddRating.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

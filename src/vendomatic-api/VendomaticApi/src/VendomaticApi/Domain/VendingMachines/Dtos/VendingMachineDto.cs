@@ -3,6 +3,8 @@ namespace VendomaticApi.Domain.VendingMachines.Dtos;
 public sealed class VendingMachineDto
 {
     public Guid Id { get; set; }
+    public int RatingCount { get; set; }
+    public int Rating { get; set; }
     public string Alias { get; set; }
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }

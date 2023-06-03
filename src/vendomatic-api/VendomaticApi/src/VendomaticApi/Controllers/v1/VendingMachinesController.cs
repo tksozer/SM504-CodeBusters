@@ -14,7 +14,7 @@ using MediatR;
 [ApiController]
 [Route("api/vendingmachines")]
 [ApiVersion("1.0")]
-public sealed class VendingMachinesController: ControllerBase
+public sealed class VendingMachinesController : ControllerBase
 {
     private readonly IMediator _mediator;
 
@@ -22,13 +22,13 @@ public sealed class VendingMachinesController: ControllerBase
     {
         _mediator = mediator;
     }
-    
+
 
     /// <summary>
     /// Creates a new VendingMachine record.
     /// </summary>
     [HttpPost(Name = "AddVendingMachine")]
-    public async Task<ActionResult<VendingMachineDto>> AddVendingMachine([FromBody]VendingMachineForCreationDto vendingMachineForCreation)
+    public async Task<ActionResult<VendingMachineDto>> AddVendingMachine([FromBody] VendingMachineForCreationDto vendingMachineForCreation)
     {
         var command = new AddVendingMachine.Command(vendingMachineForCreation);
         var commandResponse = await _mediator.Send(command);
@@ -80,6 +80,34 @@ public sealed class VendingMachinesController: ControllerBase
         return Ok(queryResponse);
     }
 
+    /// <summary>
+    /// Get the list of nearest VendingMachines.
+    /// </summary>
+    [HttpGet("FindNearestVendingMachines")]
+    public async Task<IActionResult> FindNearestVendingMachines([FromQuery] FindNearestVendingMachinesParametersDto findNearestVendingMachinesParametersDto)
+    {
+        var query = new GetNearestVendingMachineList.Query(findNearestVendingMachinesParametersDto);
+        var queryResponse = await _mediator.Send(query);
+
+        var paginationMetadata = new
+        {
+            totalCount = queryResponse.TotalCount,
+            pageSize = queryResponse.PageSize,
+            currentPageSize = queryResponse.CurrentPageSize,
+            currentStartIndex = queryResponse.CurrentStartIndex,
+            currentEndIndex = queryResponse.CurrentEndIndex,
+            pageNumber = queryResponse.PageNumber,
+            totalPages = queryResponse.TotalPages,
+            hasPrevious = queryResponse.HasPrevious,
+            hasNext = queryResponse.HasNext
+        };
+
+        Response.Headers.Add("X-Pagination",
+            JsonSerializer.Serialize(paginationMetadata));
+
+        return Ok(queryResponse);
+    }
+
 
     /// <summary>
     /// Updates an entire existing VendingMachine.
@@ -88,6 +116,16 @@ public sealed class VendingMachinesController: ControllerBase
     public async Task<IActionResult> UpdateVendingMachine(Guid id, VendingMachineForUpdateDto vendingMachine)
     {
         var command = new UpdateVendingMachine.Command(id, vendingMachine);
+        await _mediator.Send(command);
+
+        return NoContent();
+    }
+
+    [HttpPut()]
+    [HttpPut("rate/{id:guid}", Name ="RateVendingMachine")]
+    public async Task<IActionResult> RateVendingMachine(Guid id, VendingMachineForRatingDto vendingMachineRating)
+    {
+        var command = new RateVendingMachine.Command(id, vendingMachineRating);
         await _mediator.Send(command);
 
         return NoContent();

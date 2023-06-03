@@ -18,6 +18,9 @@ public class VendingMachine : BaseEntity
     [Sieve(CanFilter = true, CanSort = true)]
     public string Alias { get; private set; }
 
+    public int RatingCount { get; private set; }
+    public int Rating { get; private set; }
+
     public double? Latitude { get; private set; }
 
     public double? Longitude { get; private set; }
@@ -67,6 +70,8 @@ public class VendingMachine : BaseEntity
         var newVendingMachine = new VendingMachine();
 
         newVendingMachine.Alias = vendingMachineForCreation.Alias;
+        newVendingMachine.Rating = 0;
+        newVendingMachine.RatingCount = 0;
         newVendingMachine.Latitude = vendingMachineForCreation.Latitude;
         newVendingMachine.Longitude = vendingMachineForCreation.Longitude;
         newVendingMachine.MachineType = vendingMachineForCreation.MachineType;
@@ -82,6 +87,8 @@ public class VendingMachine : BaseEntity
     public VendingMachine Update(VendingMachineForUpdate vendingMachineForUpdate)
     {
         Alias = vendingMachineForUpdate.Alias;
+        Rating = vendingMachineForUpdate.Rating;
+        RatingCount = vendingMachineForUpdate.RatingCount;
         Latitude = vendingMachineForUpdate.Latitude;
         Longitude = vendingMachineForUpdate.Longitude;
         MachineType = vendingMachineForUpdate.MachineType;

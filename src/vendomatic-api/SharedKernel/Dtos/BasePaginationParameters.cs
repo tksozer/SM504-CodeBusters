@@ -18,5 +18,5 @@ namespace SharedKernel.Dtos
                 DefaultPageSize = value > MaxPageSize ? MaxPageSize : value;
             }
         }
-    }
+    }   
 }
